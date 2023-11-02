@@ -11,6 +11,8 @@ public class Register extends Object implements Serializable {
     private String fullname;
     private int gender;
     private Date dob;
+    private String code;
+    private boolean veri;
 
     public Register() {
     }
@@ -75,4 +77,21 @@ public class Register extends Object implements Serializable {
     public void setDob(Date dob) {
         this.dob = dob;
     }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public boolean isVeri() {
+        return veri;
+    }
+
+    public void setVeri(boolean veri) {
+        this.veri = veri;
+    }
+
 }

@@ -92,14 +92,16 @@ public class frmServer extends javax.swing.JFrame {
         paneUser = new javax.swing.JPanel();
         spRight = new javax.swing.JScrollPane();
         listUser = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
-        txtBroadcast = new javax.swing.JTextField();
-        btnSend = new javax.swing.JButton();
         paneLog = new javax.swing.JPanel();
         spLeft = new javax.swing.JScrollPane();
         logger = new javax.swing.JTextArea();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtBroadcast = new javax.swing.JTextArea();
+        btnSend = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Server Lor");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -107,11 +109,11 @@ public class frmServer extends javax.swing.JFrame {
             }
         });
 
-        paneUser.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách người dùng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Courier New", 0, 11))); // NOI18N
+        paneUser.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách người dùng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DVN-Poppins", 0, 11))); // NOI18N
 
         spRight.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        listUser.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        listUser.setFont(new java.awt.Font("DVN-Poppins", 0, 11)); // NOI18N
         listUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 listUserMouseClicked(evt);
@@ -123,7 +125,7 @@ public class frmServer extends javax.swing.JFrame {
         paneUser.setLayout(paneUserLayout);
         paneUserLayout.setHorizontalGroup(
             paneUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(spRight, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+            .addComponent(spRight, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
         );
         paneUserLayout.setVerticalGroup(
             paneUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,23 +134,10 @@ public class frmServer extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLabel1.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
-        jLabel1.setText("Broadcast: ");
-
-        txtBroadcast.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
-
-        btnSend.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
-        btnSend.setText("Gửi");
-        btnSend.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSendActionPerformed(evt);
-            }
-        });
-
-        paneLog.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Log", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Courier New", 0, 11))); // NOI18N
+        paneLog.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Log", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DVN-Poppins", 0, 11))); // NOI18N
 
         logger.setColumns(20);
-        logger.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
+        logger.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         logger.setRows(5);
         spLeft.setViewportView(logger);
 
@@ -161,8 +150,45 @@ public class frmServer extends javax.swing.JFrame {
         paneLogLayout.setVerticalGroup(
             paneLogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paneLogLayout.createSequentialGroup()
-                .addComponent(spLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(spLeft, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+        );
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Broadcast", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DVN-Poppins", 0, 11))); // NOI18N
+
+        txtBroadcast.setColumns(20);
+        txtBroadcast.setFont(new java.awt.Font("DVN-Poppins", 0, 13)); // NOI18N
+        txtBroadcast.setRows(5);
+        txtBroadcast.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBroadcastKeyTyped(evt);
+            }
+        });
+        jScrollPane1.setViewportView(txtBroadcast);
+
+        btnSend.setFont(new java.awt.Font("DVN-Poppins", 0, 12)); // NOI18N
+        btnSend.setText("Gửi");
+        btnSend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnSend))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -170,30 +196,19 @@ public class frmServer extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtBroadcast, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSend)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(paneLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(paneUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(paneLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtBroadcast, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSend))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(paneLog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(paneUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(paneLog, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(paneUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pack();
@@ -204,14 +219,8 @@ public class frmServer extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-        String message = txtBroadcast.getText().trim();
-        if (!message.equals("")) {
-            int result = access.Update("INSERT INTO broadcast (`message`) VALUES ('" + message + "')");
-            if (result > 0) {
-                server.broadcast(new BroadCast(message, new Timestamp(System.currentTimeMillis())));
-                txtBroadcast.setText("");
-            }
-        }
+        String msg = txtBroadcast.getText();
+        eventSend(msg);
     }//GEN-LAST:event_btnSendActionPerformed
 
     private void listUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listUserMouseClicked
@@ -248,6 +257,24 @@ public class frmServer extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_listUserMouseClicked
 
+    private void txtBroadcastKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBroadcastKeyTyped
+        if (evt.getKeyChar() == 10 && evt.isControlDown()) {
+            String msg = txtBroadcast.getText();
+            eventSend(msg);
+        }
+    }//GEN-LAST:event_txtBroadcastKeyTyped
+
+    private void eventSend(String msg) {
+        if (!msg.trim().equals("")) {
+            int result = access.Update("INSERT INTO broadcast (`message`) VALUES ('" + msg + "')");
+            if (result > 0) {
+                server.broadcast(new BroadCast(msg, new Timestamp(System.currentTimeMillis())));
+                txtBroadcast.setText("");
+                JOptionPane.showMessageDialog(this, "Đã gửi đi");
+            }
+        }
+    }
+
     private void scrollToBottom() {
         JScrollBar verticalBar = spLeft.getVerticalScrollBar();
         AdjustmentListener downScroller = new AdjustmentListener() {
@@ -262,13 +289,14 @@ public class frmServer extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSend;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> listUser;
     private javax.swing.JTextArea logger;
     private javax.swing.JPanel paneLog;
     private javax.swing.JPanel paneUser;
     private javax.swing.JScrollPane spLeft;
     private javax.swing.JScrollPane spRight;
-    private javax.swing.JTextField txtBroadcast;
+    private javax.swing.JTextArea txtBroadcast;
     // End of variables declaration//GEN-END:variables
 }

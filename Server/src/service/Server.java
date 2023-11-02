@@ -1,14 +1,13 @@
 package service;
 
+import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
 import form.frmServer;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import model.Block;
+import model.Lock;
 
 public class Server {
 
@@ -31,7 +30,7 @@ public class Server {
             Logger("Listening on port " + PORT);
             while (true) {
                 Socket clientSocket = serverSocket.accept();
-                Logger("Client : " + clientSocket.toString());
+                Logger(clientSocket.toString());
 
                 Client client = new Client(clientSocket, this, frmServer);
                 Cliens.add(client);
@@ -42,7 +41,7 @@ public class Server {
         }
     }
 
-    public void chat(Object obj, int to, int from) {
+    public synchronized void chat(Object obj, int to, int from) {
         Cliens.forEach((client) -> {
             if (client.getId() == to || client.getId() == from) {
                 client.send(obj);
@@ -50,7 +49,17 @@ public class Server {
         });
     }
 
-    public void broadcast(Object obj) {
+    public synchronized void chatGroup(int id, Object obj) {
+        Cliens.forEach((client) -> {
+            if (client.getSocket().isConnected()) {
+                if (client.getId() == id) {
+                    client.send(obj);
+                }
+            }
+        });
+    }
+
+    public synchronized void broadcast(Object obj) {
         Cliens.forEach((client) -> {
             if (client.getSocket().isConnected()) {
                 client.send(obj);
@@ -58,7 +67,18 @@ public class Server {
         });
     }
 
-    public void broadcast(Object obj, int id) {
+    public synchronized void broadcast(int id, Object obj) {
+        Cliens.forEach((client) -> {
+            if (client.getSocket().isConnected()) {
+                if (client.getId() == id) {
+                    client.send(obj);
+                }
+            }
+        });
+    }
+
+    /*
+    public synchronized void broadcast(Object obj, int id) {
         Cliens.forEach((client) -> {
             if (client.getSocket().isConnected()) {
                 if (client.getId() != id) {
@@ -67,16 +87,16 @@ public class Server {
             }
         });
     }
-
-    public void blockUser(int id) {
+     */
+    public synchronized void blockUser(int id) {
         Cliens.forEach((client) -> {
             if (client.getId() == id) {
-                client.send(new Block(id));
+                client.send(new Lock(id));
             }
         });
     }
 
-    public void closeConnect(int id) {
+    public synchronized void closeConnect(int id) {
         Cliens.forEach((client) -> {
             if (client.getId() == id) {
                 try {
@@ -92,11 +112,7 @@ public class Server {
     }
 
     public static void main(String[] args) {
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (UnsupportedLookAndFeelException | IllegalAccessException | InstantiationException | ClassNotFoundException ex) {
-            System.out.println(ex.toString());
-        }
+        FlatArcIJTheme.setup();
         new Server().startServer();
     }
 }

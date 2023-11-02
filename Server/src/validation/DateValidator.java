@@ -2,7 +2,11 @@ package validation;
 
 public class DateValidator {
 
-    public static boolean isValidDate(int day, int month, int year) {
+    public static boolean isValidDate(String dob) {
+        String[] date = dob.split("-");
+        int day = Integer.parseInt(date[2]);
+        int month = Integer.parseInt(date[1]);
+        int year = Integer.parseInt(date[0]);
         if (day < 1 || day > 31) {
             return false;
         }

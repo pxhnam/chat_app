@@ -4,21 +4,30 @@ import java.io.Serializable;
 
 public class Block extends Object implements Serializable {
 
-    private int id;
+    private int blocker;
+    private int blocked;
 
     public Block() {
     }
 
-    public Block(int id) {
-        this.id = id;
+    public Block(int blocker, int blocked) {
+        this.blocker = blocker;
+        this.blocked = blocked;
     }
 
-    public int getId() {
-        return id;
+    public int getBlocker() {
+        return blocker;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setBlocker(int blocker) {
+        this.blocker = blocker;
     }
 
+    public int getBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(int blocked) {
+        this.blocked = blocked;
+    }
 }

@@ -20,6 +20,10 @@ public class DataAccess {
         }
     }
 
+    public Connection getConnection() {
+        return connection;
+    }
+
     public int Update(String str) {
         try {
             int i = stmt.executeUpdate(str);

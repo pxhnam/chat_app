@@ -1,6 +1,5 @@
 package component;
 
-import form.frmMain;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -11,8 +10,10 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
+import model.Chat;
 import service.Client;
 import model.CurrentUser;
+import model.Notice;
 import model.Text;
 import net.miginfocom.swing.MigLayout;
 import swing.JIMSendTextPane;
@@ -45,6 +46,7 @@ public class Chat_Bottom extends javax.swing.JPanel {
         });
         txt.setBorder(new EmptyBorder(5, 5, 5, 5));
         txt.setHintText("Write Message Here ...");
+        txt.setFont(new java.awt.Font("DVN-Poppins", 0, 11));
         scroll.setViewportView(txt);
         ScrollBar sb = new ScrollBar();
         sb.setBackground(new Color(229, 229, 229));
@@ -56,21 +58,28 @@ public class Chat_Bottom extends javax.swing.JPanel {
         panel.setLayout(new MigLayout("filly", "0[]3[]0", "0[bottom]0"));
         panel.setPreferredSize(new Dimension(30, 28));
         panel.setBackground(Color.WHITE);
-        JButton cmd = new JButton();
-        cmd.setBorder(null);
-        cmd.setContentAreaFilled(false);
-        cmd.setIcon(new ImageIcon(getClass().getResource("/image/send.png")));
-        cmd.addActionListener((ActionEvent ae) -> {
+        JButton btn = new JButton();
+        btn.setBorder(null);
+        btn.setContentAreaFilled(false);
+        btn.setFocusPainted(false);
+        btn.setIcon(new ImageIcon(getClass().getResource("/image/send.png")));
+        btn.addActionListener((ActionEvent ae) -> {
             eventSend(txt);
         });
-        panel.add(cmd);
+        panel.add(btn);
         add(panel, "wrap");
     }
 
     private void eventSend(JIMSendTextPane txt) {
         String text = txt.getText().trim();
         if (!text.equals("")) {
-            Client.send(new Text(frmMain.getTo(), CurrentUser.getId(), text));
+            if (Notice.getID() > 0) {
+                if (Notice.getType().equals("user")) {
+                    Client.send(new Text(Notice.getID(), CurrentUser.getId(), CurrentUser.getFullname(), text));
+                } else {
+                    Client.send(new Chat(Notice.getID(), CurrentUser.getId(), CurrentUser.getFullname(), text));
+                }
+            }
             txt.setText("");
             txt.grabFocus();
             refresh();

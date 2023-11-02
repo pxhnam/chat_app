@@ -7,23 +7,25 @@ public class Text extends Object implements Serializable {
 
     private int to;
     private int from;
+    private String nameSender;
     private String msg;
-    private Timestamp createdAt;
+    private Timestamp sentAt;
 
     public Text() {
     }
 
-    public Text(int to, int from, String msg) {
+    public Text(int to, int from, String nameSender, String msg) {
         this.to = to;
         this.from = from;
+        this.nameSender = nameSender;
         this.msg = msg;
     }
 
-    public Text(int to, int from, String msg, Timestamp createdAt) {
+    public Text(int to, int from, String msg, Timestamp sentAt) {
         this.to = to;
         this.from = from;
         this.msg = msg;
-        this.createdAt = createdAt;
+        this.sentAt = sentAt;
     }
 
     public int getTo() {
@@ -42,6 +44,14 @@ public class Text extends Object implements Serializable {
         this.from = from;
     }
 
+    public String getNameSender() {
+        return nameSender;
+    }
+
+    public void setNameSender(String nameSender) {
+        this.nameSender = nameSender;
+    }
+
     public String getMsg() {
         return msg;
     }
@@ -50,12 +60,12 @@ public class Text extends Object implements Serializable {
         this.msg = msg;
     }
 
-    public Timestamp getCreatedAt() {
-        return createdAt;
+    public Timestamp getSentAt() {
+        return sentAt;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
+    public void setSentAt(Timestamp sentAt) {
+        this.sentAt = sentAt;
     }
 
 }

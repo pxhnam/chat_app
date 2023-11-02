@@ -1,9 +1,9 @@
 package component;
 
-import form.frmMain;
 import java.awt.Color;
 import service.Client;
 import model.Friend;
+import model.Notice;
 
 public class Item_User extends javax.swing.JPanel {
 
@@ -13,12 +13,16 @@ public class Item_User extends javax.swing.JPanel {
 
     private boolean mouseOver;
 
-    public Item_User(int id, String name, boolean status) {
+    public Item_User(int id, String fullname, boolean status) {
         initComponents();
         this.id = id;
-        this.fullname = name;
+        this.fullname = fullname;
         this.status = status;
-        lbName.setText(name);
+        init();
+    }
+
+    private void init() {
+        lbName.setText(fullname);
         updateStatus(status);
     }
 
@@ -107,7 +111,7 @@ public class Item_User extends javax.swing.JPanel {
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
         if (mouseOver) {
             Client.send(new Friend(id));
-            frmMain.setTo(id);
+            Notice.set(id, "user");
         }
     }//GEN-LAST:event_formMouseReleased
 

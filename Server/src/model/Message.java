@@ -8,7 +8,8 @@ public class Message extends Object implements Serializable {
     private int to;
     private int from;
     private String msg;
-    private Timestamp createdAt;
+    private String nameSender;
+    private Timestamp sentAt;
 
     public Message() {
     }
@@ -17,9 +18,9 @@ public class Message extends Object implements Serializable {
         this.msg = msg;
     }
 
-    public Message(String msg, Timestamp createdAt) {
+    public Message(String msg, Timestamp sentAt) {
         this.msg = msg;
-        this.createdAt = createdAt;
+        this.sentAt = sentAt;
     }
 
     public Message(int to, int from, String msg) {
@@ -28,11 +29,12 @@ public class Message extends Object implements Serializable {
         this.msg = msg;
     }
 
-    public Message(int to, int from, String msg, Timestamp createdAt) {
+    public Message(int to, int from, String nameSender, String msg, Timestamp sentAt) {
         this.to = to;
         this.from = from;
+        this.nameSender = nameSender;
         this.msg = msg;
-        this.createdAt = createdAt;
+        this.sentAt = sentAt;
     }
 
     public int getTo() {
@@ -51,6 +53,14 @@ public class Message extends Object implements Serializable {
         this.from = from;
     }
 
+    public String getNameSender() {
+        return nameSender;
+    }
+
+    public void setNameSender(String nameSender) {
+        this.nameSender = nameSender;
+    }
+
     public String getMsg() {
         return msg;
     }
@@ -59,12 +69,12 @@ public class Message extends Object implements Serializable {
         this.msg = msg;
     }
 
-    public Timestamp getCreatedAt() {
-        return createdAt;
+    public Timestamp getSentAt() {
+        return sentAt;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
+    public void setSentAt(Timestamp sentAt) {
+        this.sentAt = sentAt;
     }
 
 }

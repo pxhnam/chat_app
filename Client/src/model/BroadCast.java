@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 public class BroadCast extends Object implements Serializable {
 
     private String message;
-    private Timestamp createdAt;
+    private Timestamp sentAt;
 
     public BroadCast() {
     }
@@ -15,9 +15,9 @@ public class BroadCast extends Object implements Serializable {
         this.message = message;
     }
 
-    public BroadCast(String message, Timestamp createdAt) {
+    public BroadCast(String message, Timestamp sentAt) {
         this.message = message;
-        this.createdAt = createdAt;
+        this.sentAt = sentAt;
     }
 
     public String getMessage() {
@@ -28,12 +28,12 @@ public class BroadCast extends Object implements Serializable {
         this.message = message;
     }
 
-    public Timestamp getCreatedAt() {
-        return createdAt;
+    public Timestamp getSentAt() {
+        return sentAt;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
+    public void setSentAt(Timestamp sentAt) {
+        this.sentAt = sentAt;
     }
 
 }
